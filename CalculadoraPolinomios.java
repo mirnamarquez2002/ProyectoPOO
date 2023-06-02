@@ -7,6 +7,7 @@ public class CalculadoraPolinomios {
 
     private JFrame ventana;
     private JTextField entradaPolinomio;
+    private JTextField salidaPolinomio;
     private JButton botonResolver;
 
     public CalculadoraPolinomios() {
@@ -23,6 +24,11 @@ public class CalculadoraPolinomios {
         JLabel etiquetaTitulo = new JLabel("Calculadora de Polinomios");
         panelSuperior.add(etiquetaTitulo);
         */
+        //Creating inferior panel
+        JPanel panelInf = new JPanel();
+        panelInf.setLayout(new BorderLayout());
+        salidaPolinomio = new JTextField(21);
+        panelInf.add(salidaPolinomio, BorderLayout.CENTER);
 
         // Crear el panel derecho con los botones de control
         JPanel panelLeft = new JPanel();
@@ -49,17 +55,19 @@ public class CalculadoraPolinomios {
         JPanel panelCentral = new JPanel();
         panelCentral.setLayout(new BorderLayout());
         JLabel etiquetaEntrada = new JLabel("Entrada:");
-        entradaPolinomio = new JTextField(30);
+        entradaPolinomio = new JTextField(10);
         botonResolver = new JButton("Ingresar Polinomio");
         panelCentral.add(etiquetaEntrada, BorderLayout.NORTH);
         panelCentral.add(entradaPolinomio, BorderLayout.CENTER);
         panelCentral.add(botonResolver, BorderLayout.SOUTH);
 
         // Agregar los paneles a la ventana principal
-        // ventana.add(panelSuperior, BorderLayout.NORTH);
+        // ventana.add(panelSuperior, BorderLayout.NORTH); <- Is this necessary?
+
         ventana.add(panelRight, BorderLayout.EAST);
         ventana.add(panelLeft, BorderLayout.WEST);
         ventana.add(panelCentral, BorderLayout.CENTER);
+        ventana.add(panelInf, BorderLayout.SOUTH);
 
         // Agregar acciones a los botones
         botonResolver.addActionListener(new ActionListener() {
