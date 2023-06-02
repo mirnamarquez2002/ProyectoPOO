@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+//import polynomial_pkg.*; -> importing the whole package
+import polynomial_pkg.Polynomial; //Importing Polynomial class from polynomial_pkg
 
 public class Main {
 
@@ -41,13 +43,13 @@ public class Main {
 
         //Creating a Polynomial addedArraysP (new instance)
         Polynomial addedArraysP = arreglo1.add(arreglo2);
-        addedArraysP.toString();
+        addedArraysP.printString();
         System.out.print(addedArraysP.evaluate(evalNumb));
 
         System.out.println("");
         
         Polynomial substractedArraysP = arreglo1.substract(arreglo2);
-        substractedArraysP.toString();
+        substractedArraysP.printString();
         System.out.print(substractedArraysP.evaluate(evalNumb));
     }
 }
