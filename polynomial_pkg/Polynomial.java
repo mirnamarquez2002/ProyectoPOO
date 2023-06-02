@@ -12,6 +12,7 @@ public class Polynomial{
     private Integer degree;
     private ArrayList<Integer> polyArray;
 
+    //********************Constructors
 
     /** Constructor for the class "Polynomial". It initializes the degree of the polynomial
     * to 0 and creates a new ArrayList called "polyArray" to store the coefficients of the
@@ -35,6 +36,54 @@ public class Polynomial{
         degree = k;
         polyArray = new ArrayList<Integer>(a1);
     }
+
+    /*********************************
+
+    //*************Setters and getters
+
+        /**
+     * The method returns an ArrayList of integers named polyArray from the object.
+     * 
+     * @return An ArrayList of integers named "polyArray".
+     */
+    public ArrayList<Integer> getArray(){
+        return polyArray;
+    }
+
+    /**
+     * The method returns the degree of the object as an Integer.
+     * 
+     * @return An Integer value representing the degree.
+     */
+    public Integer getDegree(){
+        return degree;
+    }
+
+    /**
+     * This method sets the degree of an object.This method is a setter method that allows
+     * the value of the degree variable to be updated from outside the class.
+     * 
+     * @param degree The parameter "degree" is an Integer type variable that is being set to the
+     * instance variable "degree" of the current object. It is the degree of the polynomial. 
+     */
+    public void setDegree(Integer degree){
+        this.degree = degree;
+    }
+
+    /**
+     * This method sets the value of a private ArrayList variable called polyArray.
+     * The method assigns the value of "a" to the instance variable "polyArray".
+     * 
+     * @param a The parameter "a" is an ArrayList of integers that represents the coefficients
+     * of the polynomial.
+     */
+    public void setArray(ArrayList<Integer> a){
+        polyArray = a;
+    }
+
+    /*********************************
+    
+    /**********************     Methods
 
     /**
      * This method fills the empty spaces in a polynomial array with zeros.
@@ -190,46 +239,6 @@ public class Polynomial{
             j--;
         }
         return result;
-    }
-
-    /**
-     * The method returns an ArrayList of integers named polyArray from the object.
-     * 
-     * @return An ArrayList of integers named "polyArray".
-     */
-    public ArrayList<Integer> getArray(){
-        return polyArray;
-    }
-
-    /**
-     * The method returns the degree of the object as an Integer.
-     * 
-     * @return An Integer value representing the degree.
-     */
-    public Integer getDegree(){
-        return degree;
-    }
-
-    /**
-     * This method sets the degree of an object.This method is a setter method that allows
-     * the value of the degree variable to be updated from outside the class.
-     * 
-     * @param degree The parameter "degree" is an Integer type variable that is being set to the
-     * instance variable "degree" of the current object. It is the degree of the polynomial. 
-     */
-    public void setDegree(Integer degree){
-        this.degree = degree;
-    }
-
-    /**
-     * This method sets the value of a private ArrayList variable called polyArray.
-     * The method assigns the value of "a" to the instance variable "polyArray".
-     * 
-     * @param a The parameter "a" is an ArrayList of integers that represents the coefficients
-     * of the polynomial.
-     */
-    public void setArray(ArrayList<Integer> a){
-        polyArray = a;
     }
 
     /**
