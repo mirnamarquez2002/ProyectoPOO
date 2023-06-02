@@ -52,7 +52,7 @@ public class Polynomial{
      * This function prints out a polynomial expression based on the values stored in an ArrayList.
      * @param None This method receives no parameters since its purpose is only to print the polynomial, no changes made.
      */
-    public void printString(){
+    public String toString(){
         int i,k=degree,b=0,b2=0;
         //Printing if the array's lenght is more than 2
         fillSpacesPolyArray();
@@ -145,6 +145,7 @@ public class Polynomial{
             }
         }
         System.out.println("");
+        return "";
         
     }
 
