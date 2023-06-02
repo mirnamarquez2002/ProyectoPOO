@@ -24,7 +24,7 @@ public class Polynomial{
         }   
     }
 
-    public void printString(){
+    public String toString(){
         int i,k=degree,b=0,b2=0;
         //Printing if the array's lenght is more than 2
         fillSpacesPolyArray();
@@ -117,6 +117,7 @@ public class Polynomial{
             }
         }
         System.out.println("");
+        return "";
         
     }
 

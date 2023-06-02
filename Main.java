@@ -41,13 +41,13 @@ public class Main {
 
         //Creating a Polynomial addedArraysP (new instance)
         Polynomial addedArraysP = arreglo1.add(arreglo2);
-        addedArraysP.printString();
+        addedArraysP.toString();
         System.out.print(addedArraysP.evaluate(evalNumb));
 
         System.out.println("");
         
         Polynomial substractedArraysP = arreglo1.substract(arreglo2);
-        substractedArraysP.printString();
+        substractedArraysP.toString();
         System.out.print(substractedArraysP.evaluate(evalNumb));
     }
 }
