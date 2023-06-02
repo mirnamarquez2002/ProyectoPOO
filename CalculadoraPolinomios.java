@@ -15,26 +15,34 @@ public class CalculadoraPolinomios {
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setSize(600, 400);
 
-        // Crear el panel superior con el título
+        // Crear el panel superior con el título, Discutir necesidad de este panel.
+        /* 
         JPanel panelSuperior = new JPanel();
         panelSuperior.setBackground(Color.BLUE);
         panelSuperior.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel etiquetaTitulo = new JLabel("Calculadora de Polinomios");
         panelSuperior.add(etiquetaTitulo);
+        */
 
         // Crear el panel derecho con los botones de control
-        JPanel panelDerecho = new JPanel();
-        panelDerecho.setLayout(new GridLayout(3, 1));
-        JButton botonMinimizar = new JButton("_");
-        JButton botonMaximizar = new JButton("[]");
+        JPanel panelLeft = new JPanel();
+        panelLeft.setLayout(new GridLayout(3, 1));
+        JButton botonAdd = new JButton("Sumar");
+        JButton botonSubstract = new JButton("Restar");
+        JButton botonEval = new JButton("Evaluar");
+        JButton botonMult = new JButton("Multiplicar");
+        JButton botonGraph = new JButton("Graficar");
         JButton botonCerrar = new JButton("X");
-        panelDerecho.add(botonMinimizar);
-        panelDerecho.add(botonMaximizar);
-        panelDerecho.add(botonCerrar);
+        panelLeft.add(botonAdd);
+        panelLeft.add(botonSubstract);
+        panelLeft.add(botonEval);
+        panelLeft.add(botonMult);
+        panelLeft.add(botonGraph);
+        panelLeft.add(botonCerrar);
 
         // Crear el panel izquierdo para la ventana gráfica
-        JPanel panelIzquierdo = new JPanel();
-        panelIzquierdo.setBackground(Color.LIGHT_GRAY);
+        JPanel panelRight = new JPanel();
+        panelRight.setBackground(Color.LIGHT_GRAY);
         // Aquí puedes agregar los componentes necesarios para la gráfica
 
         // Crear el panel central para la entrada de polinomio y el botón de resolver
@@ -42,15 +50,15 @@ public class CalculadoraPolinomios {
         panelCentral.setLayout(new BorderLayout());
         JLabel etiquetaEntrada = new JLabel("Entrada:");
         entradaPolinomio = new JTextField(30);
-        botonResolver = new JButton("Resolver");
+        botonResolver = new JButton("Ingresar Polinomio");
         panelCentral.add(etiquetaEntrada, BorderLayout.NORTH);
         panelCentral.add(entradaPolinomio, BorderLayout.CENTER);
         panelCentral.add(botonResolver, BorderLayout.SOUTH);
 
         // Agregar los paneles a la ventana principal
-        ventana.add(panelSuperior, BorderLayout.NORTH);
-        ventana.add(panelDerecho, BorderLayout.EAST);
-        ventana.add(panelIzquierdo, BorderLayout.WEST);
+        // ventana.add(panelSuperior, BorderLayout.NORTH);
+        ventana.add(panelRight, BorderLayout.EAST);
+        ventana.add(panelLeft, BorderLayout.WEST);
         ventana.add(panelCentral, BorderLayout.CENTER);
 
         // Agregar acciones a los botones
