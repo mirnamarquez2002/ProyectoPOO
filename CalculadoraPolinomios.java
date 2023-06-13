@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import polynomial_pkg.Polynomial;
 
 public class CalculadoraPolinomios {
 
@@ -76,7 +77,7 @@ public class CalculadoraPolinomios {
                 resolverPolinomio();
             }
         });
-        botonCerrar.addActionListener(new ActionListener() {
+        botonEval.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
