@@ -3,12 +3,12 @@ import polynomial_pkg.*;
 
 public class Parsing{
 
-    private ArrayList<Integer> parsedArray;
+    private ArrayList<Integer> parsedArray = new ArrayList<Integer>();
     private Polynomial polyArray = new Polynomial();
 
     //Constructor instancing parsedArray
     public Parsing(){
-        parsedArray = new ArrayList<Integer>();
+        parsedArray = polyArray.getArray();
     }
 
     public ArrayList<Integer> parseArray(ArrayList<Integer> initialArray){
