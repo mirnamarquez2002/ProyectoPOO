@@ -2,13 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import polynomial_pkg.Polynomial;
 
 public class CalculadoraPolinomios {
 
     private JFrame ventana;
     private JTextField entradaPolinomio;
-    private JTextField salidaPolinomio;
     private JButton botonResolver;
 
     public CalculadoraPolinomios() {
@@ -17,58 +15,43 @@ public class CalculadoraPolinomios {
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setSize(600, 400);
 
-        // Crear el panel superior con el título, Discutir necesidad de este panel.
-        /* 
+        // Crear el panel superior con el título
         JPanel panelSuperior = new JPanel();
         panelSuperior.setBackground(Color.BLUE);
         panelSuperior.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel etiquetaTitulo = new JLabel("Calculadora de Polinomios");
         panelSuperior.add(etiquetaTitulo);
-        */
-        //Creating inferior panel
-        JPanel panelInf = new JPanel();
-        panelInf.setLayout(new BorderLayout());
-        salidaPolinomio = new JTextField(21);
-        panelInf.add(salidaPolinomio, BorderLayout.CENTER);
 
         // Crear el panel derecho con los botones de control
-        JPanel panelLeft = new JPanel();
-        panelLeft.setLayout(new GridLayout(3, 1));
-        JButton botonAdd = new JButton("Sumar");
-        JButton botonSubstract = new JButton("Restar");
-        JButton botonEval = new JButton("Evaluar");
-        JButton botonMult = new JButton("Multiplicar");
-        JButton botonGraph = new JButton("Graficar");
+        JPanel panelDerecho = new JPanel();
+        panelDerecho.setLayout(new GridLayout(3, 1));
+        JButton botonMinimizar = new JButton("_");
+        JButton botonMaximizar = new JButton("[]");
         JButton botonCerrar = new JButton("X");
-        panelLeft.add(botonAdd);
-        panelLeft.add(botonSubstract);
-        panelLeft.add(botonEval);
-        panelLeft.add(botonMult);
-        panelLeft.add(botonGraph);
-        panelLeft.add(botonCerrar);
+        panelDerecho.add(botonMinimizar);
+        panelDerecho.add(botonMaximizar);
+        panelDerecho.add(botonCerrar);
 
         // Crear el panel izquierdo para la ventana gráfica
-        JPanel panelRight = new JPanel();
-        panelRight.setBackground(Color.LIGHT_GRAY);
+        JPanel panelIzquierdo = new JPanel();
+        panelIzquierdo.setBackground(Color.LIGHT_GRAY);
         // Aquí puedes agregar los componentes necesarios para la gráfica
 
         // Crear el panel central para la entrada de polinomio y el botón de resolver
         JPanel panelCentral = new JPanel();
         panelCentral.setLayout(new BorderLayout());
         JLabel etiquetaEntrada = new JLabel("Entrada:");
-        entradaPolinomio = new JTextField(10);
-        botonResolver = new JButton("Ingresar Polinomio");
+        entradaPolinomio = new JTextField(30);
+        botonResolver = new JButton("Resolver");
         panelCentral.add(etiquetaEntrada, BorderLayout.NORTH);
         panelCentral.add(entradaPolinomio, BorderLayout.CENTER);
         panelCentral.add(botonResolver, BorderLayout.SOUTH);
 
         // Agregar los paneles a la ventana principal
-        // ventana.add(panelSuperior, BorderLayout.NORTH); <- Is this necessary?
-
-        ventana.add(panelRight, BorderLayout.EAST);
-        ventana.add(panelLeft, BorderLayout.WEST);
+        ventana.add(panelSuperior, BorderLayout.NORTH);
+        ventana.add(panelDerecho, BorderLayout.EAST);
+        ventana.add(panelIzquierdo, BorderLayout.WEST);
         ventana.add(panelCentral, BorderLayout.CENTER);
-        ventana.add(panelInf, BorderLayout.SOUTH);
 
         // Agregar acciones a los botones
         botonResolver.addActionListener(new ActionListener() {
@@ -77,7 +60,7 @@ public class CalculadoraPolinomios {
                 resolverPolinomio();
             }
         });
-        botonEval.addActionListener(new ActionListener() {
+        botonCerrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
