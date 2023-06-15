@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import org.xml.sax.helpers.ParserAdapter;
-
 import polynomial_pkg.*;
 
 public class Parsing{
@@ -25,7 +22,7 @@ public class Parsing{
         return polyArray;
     }
 
-    public Polynomial parseArray(String[] semiParsedArray){
+    private Polynomial parseArray(String[] semiParsedArray){
         Polynomial finalPolynomial = new Polynomial();
         String[] tempArr = new String[semiParsedArray[0].length()+1];
         String[] tempArr2 = new String[semiParsedArray[0].length()+1];
@@ -51,12 +48,39 @@ public class Parsing{
 
         //We need to add zeros in case we received a Polynomial such as X^5+x^2+1
         //So far we would have as Coeff 1 1 1, but we need 1 0 0 1 0 1
-        
+        //We will see if there is the need for a zero using the exponents list
+        //Whenever we find a gap (for example between 5 and 2 there are 2 gaps < corresponding to
+        //the exponents 4 and 3 >, but between 5 and 4 there would not be any gap)
 
-        return polyArray;
+        /* 2ND NOTE: 
+         * This will only add zeros between coefficients, but not add any zeros after the last coeff
+         * For example: For x^7+x^5, inTempArray = [1,0,1] instead of [1,0,1,0,0,0,0,0]
+         * For x^7, intTempArray = [1] instead of [1,0,0,0,0,0,0,0]
+         * This zeros will be added in fillSpacesPolyArray() method, that belongs to Polynomial.java
+         */
+        Integer sizeArr2 = intTempArray2.size();
+        int k=1;
+        for(int i=0;i<sizeArr2;i++){
+            int j=1;
+            if(i!=sizeArr2-1){
+                if(i!=0){
+                    k=k+1;
+                }
+                while((intTempArray2.get(i)-j)!=intTempArray2.get(i+1)){
+                    intTempArray.add(k,0);
+                    j++;
+                    k++;
+                }
+            }
+        }
+        int stop = 0;
+        //Now we assign the coeffs intTempArray array to Polynomial object created
+        finalPolynomial.setArray(intTempArray);
+        
+        return finalPolynomial;
     }
 
-    public char[] getChar(String a){
+    private char[] getChar(String a){
         int j = 0;
         char[] charArray = new char[a.length()+1];
         if(a.charAt(0)!='-' && a.charAt(0)!='+'){
@@ -77,13 +101,12 @@ public class Parsing{
         return charArray;
     }
 
-    public String[] getTerms(char[] a){
+    private String[] getTerms(char[] a){
         int m=0,n=0,o=0,p=0;
         String string1 = "";//Will store the coeffs
         String string2 = "";//Will store exp coeffs to determine the degree of the polynomial
         char[] charArray2 = new char[a.length*2];//Will store all exp numbers
         char[] charArray3 = new char[a.length*2];//Stores all exponencials
-        char[] charArray4 = new char[a.length];
         String[] stringArray = new String[a.length];
         Boolean flag = false;
 
@@ -137,6 +160,9 @@ public class Parsing{
                     charArray3[p]=a[o];
                     o++;
                     p++;
+                    if(o == a.length){
+                        break;
+                    }
                 }
                 charArray3[p]='/';
                 p++;
@@ -197,11 +223,16 @@ public class Parsing{
         return flag;
     }
 
+    /*Code to test PArsing.java */
+    /* 
     public static void main(String[] args){
         
         Scanner stdin = new Scanner(System.in);
         String input = stdin.nextLine();
         Parsing p = new Parsing();
         Polynomial pol = p.parse(input);
-    }
+        System.out.println("The Array and Degree are: ");
+        System.out.println(pol.getDegree());
+        System.out.println(pol.getArray());
+    } */
 }
